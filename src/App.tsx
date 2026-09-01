@@ -10,7 +10,7 @@ import WebDesignPage from './pages/web-design-page'
 import SeoPage from './pages/seo-page'
 import MaintenanceAndSupportPage from './pages/maintenance-page'
 import PrivacyPolicyPage from './pages/privacy-policy-page'
-import PageNotFound from './pages/404-page'
+import CmsRouter from './pages/cms-page'
 import InteractiveCursorGSAP from './components/interactive-cursor-gsap'
 import Dialog from './components/dialog'
 
@@ -40,7 +40,7 @@ const App = () => {
           <Route path="maintenance-&-support" element={<MaintenanceAndSupportPage />} />
           <Route path="seo" element={<SeoPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="*" element={<CmsRouter />} />
         </Routes>
       </main>
       <Footer />
