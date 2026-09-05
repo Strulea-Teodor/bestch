@@ -12,7 +12,6 @@ type LoadingScreenProps = {
 const LoadingScreen = ({ ready = false, onZoomComplete, onComplete }: LoadingScreenProps) => {
   const rootRef = useRef<HTMLDivElement | null>(null)
   const logoRef = useRef<HTMLImageElement | null>(null)
-  const whiteRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (!ready) return
@@ -20,24 +19,33 @@ const LoadingScreen = ({ ready = false, onZoomComplete, onComplete }: LoadingScr
     // The pulse fights the zoom, so drop it once the exit starts.
     logoRef.current?.classList.remove('animate-pulse')
 
+    // Anchor the zoom on the wordmark's B stem (measured from the PNG:
+    // x 1518-1567 of 2560, cap center y 49.5%) so the stem stays pinned at
+    // the viewport center while it grows past every edge.
+    gsap.set(logoRef.current, { transformOrigin: '60.27% 49.5%' })
+
+    // Scale at which the stem (~3.9px wide on the rendered 200px logo, i.e.
+    // 50px of the 2560px source) covers the viewport width with margin.
+    const coverageScale = Math.ceil(window.innerWidth * 0.42)
+    let fired = false
+
     const tl = gsap.timeline()
-    tl.to(logoRef.current, {
-      // Zoom the logo into the viewport until its white parts engulf it.
-      scale: 20,
-      duration: 0.9,
-      ease: 'power2.in'
-    })
-      .to(
-        whiteRef.current,
-        {
-          // Complete the coverage: the screen is fully white at this point.
-          opacity: 1,
-          duration: 0.3,
-          ease: 'power1.in',
-          onComplete: () => onZoomComplete?.()
-        },
-        '-=0.25'
-      )
+    // Ramp to full white during the zoom so the coverage frame is pure
+    // white instead of the resting opacity-80 tone.
+    tl.to(logoRef.current, { opacity: 1, duration: 0.4 }, 0)
+      .to(logoRef.current, {
+        scale: 3000,
+        duration: 1.3,
+        ease: 'power2.in',
+        onUpdate: () => {
+          const scale = gsap.getProperty(logoRef.current!, 'scale') as number
+          if (!fired && scale >= coverageScale) {
+            // The B's white stem now covers the whole screen: fade in.
+            fired = true
+            onZoomComplete?.()
+          }
+        }
+      })
       .to(rootRef.current, {
         // Reveal the page fading in underneath the white.
         opacity: 0,
@@ -62,7 +70,6 @@ const LoadingScreen = ({ ready = false, onZoomComplete, onComplete }: LoadingScr
         alt="BEST Chisinau"
         className="w-[200px] opacity-80 animate-pulse"
       />
-      <div ref={whiteRef} className="absolute inset-0 bg-white opacity-0 pointer-events-none" />
     </div>
   )
 }
