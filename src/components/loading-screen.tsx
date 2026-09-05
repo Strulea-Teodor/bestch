@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 
 import bestChisinau from '../assets/best-chisinau.png'
@@ -12,6 +13,16 @@ type LoadingScreenProps = {
 const LoadingScreen = ({ ready = false, onZoomComplete, onComplete }: LoadingScreenProps) => {
   const rootRef = useRef<HTMLDivElement | null>(null)
   const logoRef = useRef<HTMLImageElement | null>(null)
+  const [showHint, setShowHint] = useState(false)
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowHint(true), 3000)
+
+    return () => {
+      window.clearTimeout(timer)
+    }
+  }, [])
 
   useEffect(() => {
     if (!ready) return
@@ -70,6 +81,13 @@ const LoadingScreen = ({ ready = false, onZoomComplete, onComplete }: LoadingScr
         alt="BEST Chisinau"
         className="w-[200px] opacity-80 animate-pulse"
       />
+      <p
+        className={`absolute left-1/2 -translate-x-1/2 top-[calc(50%+70px)] text-sm font-nohemi text-white pointer-events-none whitespace-nowrap transition-opacity duration-300 ${
+          showHint && !ready ? 'opacity-60' : 'opacity-0'
+        }`}
+      >
+        {t('This is taking longer than usual.')}
+      </p>
     </div>
   )
 }
