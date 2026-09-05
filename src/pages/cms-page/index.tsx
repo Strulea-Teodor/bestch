@@ -3,11 +3,8 @@ import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import PageNotFound from '../404-page'
+import LoadingScreen from '../../components/loading-screen'
 import { fetchCmsPages, normalizePath, type CmsPage } from '../../lib/cms'
-
-const LoadingScreen = () => (
-  <div className="fixed inset-0 z-50 bg-[#141414]" />
-)
 
 /**
  * Shown for spreadsheet entries of type "custom" that don't have a matching
