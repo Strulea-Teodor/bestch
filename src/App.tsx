@@ -35,7 +35,7 @@ const App = () => {
 
   useEffect(() => {
     const storedLanguage = localStorage.getItem('language')
-    const language = storedLanguage ? storedLanguage : navigator.language.split('-')[0]
+    const language = storedLanguage ? storedLanguage : 'ro'
 
     if (language) i18next.changeLanguage(language)
   }, [])

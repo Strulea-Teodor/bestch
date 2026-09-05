@@ -28,21 +28,23 @@ const WhyUsSection = () => {
   }, [])
 
   const spans = [
-    { innerText: 'At Media Unbothered, we redefine the narrative.' },
     {
       innerText:
-        'Choose us for campaigns that demand attention, where every pixel carries purpose.'
+        'BEST Chișinău este o comunitate formată din studenți cu interese, idei și personalități diferite, uniți de dorința de a face lucruri care ne plac și de a le face împreună.'
+    },
+    {
+      innerText: 'Organizăm evenimente, învățăm unii de la alții și ne distrăm pe parcurs.'
     },
     {
       innerText:
-        'Unleash the unbothered spirit—your journey to an unforgettable story starts here.'
+        'În timp, această experiență ajunge să însemne oameni noi, dezvoltare continuă și multe amintiri.'
     }
   ]
 
   return (
     <section ref={rootRef} className="leading-5 md:py-[110px] py-[50px]">
       <h2 className="text-white/80 md:text-xl text-base font-normal leading-normal md:mb-[37px] mb-5">
-        {t('Why us')}
+        {t('Cine suntem noi?')}
       </h2>
 
       <p
