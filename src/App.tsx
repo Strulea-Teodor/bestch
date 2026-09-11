@@ -7,6 +7,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 import LoadingScreen from './components/loading-screen'
 import LandingPage from './pages/landing-page'
+import AboutUsPage from './pages/about-us-page'
 import WebDevelopmentPage from './pages/web-development-page'
 import WebDesignPage from './pages/web-design-page'
 import SeoPage from './pages/seo-page'
@@ -86,6 +87,7 @@ const App = () => {
             <Dialog />
             <Routes>
               <Route path="/" element={<LandingPage />} />
+              <Route path="about-us" element={<AboutUsPage />} />
               <Route path="web-development" element={<WebDevelopmentPage />} />
               <Route path="web-design" element={<WebDesignPage />} />
               <Route path="maintenance-&-support" element={<MaintenanceAndSupportPage />} />

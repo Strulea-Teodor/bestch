@@ -19,7 +19,7 @@ const Header = () => {
   const dispatch = useDispatch()
 
   const links = [
-    { title: 'About us', to: '/' },
+    { title: 'About us', to: '/about-us' },
     { title: 'Services', to: '/' },
     { title: 'Contact', onClick: () => dispatch(setDialogVisibility()) }
   ]
@@ -58,7 +58,11 @@ const Header = () => {
                 className="hover:opacity-70 transition-all"
                 onMouseOver={() => setCursorSize(60)}
                 onMouseLeave={() => setCursorSize(40)}
-                onClick={() => dispatch(setDialogVisibility())}
+                onClick={() => {
+                  // Only the destination-less Contact link opens the dialog;
+                  // real routes just navigate.
+                  if (!link.to) dispatch(setDialogVisibility())
+                }}
               >
                 {t(link.title)}
               </Link>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Link } from 'react-router-dom'
 import useCursorSize from '../../../lib/use-cursor-size'
 import { useTranslation } from 'react-i18next'
 
@@ -52,9 +53,24 @@ const WhyUsSection = () => {
         onMouseOver={() => setCursorSize(80)}
         onMouseLeave={() => setCursorSize(40)}
       >
-        {spans.map((span) => (
+        {spans.map((span, index) => (
           <span key={span.innerText} id="span" className="opacity-10">
             {t(span.innerText)}{' '}
+            {index === spans.length - 1 && (
+              <Link
+                to="/about-us"
+                className="group relative inline-block"
+                onMouseOver={() => setCursorSize(80)}
+                onMouseLeave={() => setCursorSize(40)}
+              >
+                {t('Află mai multe despre noi.')}
+                {/* Underline retracts to the left on hover: width shrinks until gone. */}
+                <span
+                  aria-hidden
+                  className="absolute left-0 -bottom-[8px] h-[3px] w-full bg-white origin-left scale-x-100 group-hover:scale-x-0 transition-transform duration-500 ease-out"
+                />
+              </Link>
+            )}
           </span>
         ))}
       </p>

@@ -74,7 +74,12 @@ const MobileDrawer = ({
             to={link.to ? link.to : '#'}
             key={link.title}
             className="text-6xl font-semibold opacity-80 hover:opacity-100 transition-all"
-            onClick={() => dispatch(setDialogVisibility())}
+            onClick={() => {
+              // Real routes close the drawer and navigate; the
+              // destination-less Contact link opens the contact dialog.
+              if (link.to) closeDrawerWithAnimation()
+              else dispatch(setDialogVisibility())
+            }}
           >
             {t(link.title)}
           </Link>
