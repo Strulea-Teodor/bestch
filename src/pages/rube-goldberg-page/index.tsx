@@ -45,7 +45,7 @@ const RubeGoldbergPage = () => {
         </div>
       </section>
 
-      <section className="rg-about rg-shell" aria-labelledby="rg-about-heading">
+      <section id="despre" className="rg-about rg-shell" aria-labelledby="rg-about-heading">
         <div className="rg-section-label">{copy('Ingineria iese din manual', 'Engineering leaves the textbook')}</div>
         <div className="rg-about-grid">
           <h2 id="rg-about-heading">{copy('COMPLICAT.\nCU UN SCOP\nFOARTE SIMPLU.', 'COMPLICATED.\nFOR A VERY\nSIMPLE REASON.')}</h2>
@@ -58,7 +58,7 @@ const RubeGoldbergPage = () => {
         <figure className="rg-wide-photo"><img src={workshopPhoto} alt={copy('Studenți BEST la o activitate de echipă', 'BEST students taking part in a team activity')} loading="lazy" /><figcaption>{copy('Creativitate care se construiește împreună.', 'Creativity, built together.')}</figcaption></figure>
       </section>
 
-      <section className="rg-challenge rg-paper" aria-labelledby="rg-challenge-heading">
+      <section id="provocare" className="rg-challenge rg-paper" aria-labelledby="rg-challenge-heading">
         <div className="rg-shell">
           <div className="rg-section-label">{copy('Provocarea ediției 2026', 'The 2026 challenge')}</div>
           <div className="rg-challenge-title"><span className="rg-challenge-number" aria-hidden="true">10</span><h2 id="rg-challenge-heading">{copy('TOTUL PENTRU\nO PAGINĂ.', 'ALL THIS FOR\nONE PAGE.')}</h2></div>
@@ -72,13 +72,13 @@ const RubeGoldbergPage = () => {
         </div>
       </section>
 
-      <section className="rg-timeline rg-shell" aria-labelledby="rg-timeline-heading">
+      <section id="calendar" className="rg-timeline rg-shell" aria-labelledby="rg-timeline-heading">
         <div className="rg-section-label">{copy('Calendarul competiției', 'Competition calendar')}</div>
         <h2 id="rg-timeline-heading">{copy('FIECARE PAS\nÎL PORNEȘTE PE URMĂTORUL.', 'EVERY STEP\nSETS THE NEXT IN MOTION.')}</h2>
         <ol>{stages.map(([date, title, description]) => <li key={date}><time>{date}</time><div><h3>{title}</h3><p>{description}</p></div><span className="rg-timeline-dot" aria-hidden="true" /></li>)}</ol>
       </section>
 
-      <section className="rg-teams rg-paper" aria-labelledby="rg-teams-heading">
+      <section id="echipe" className="rg-teams rg-paper" aria-labelledby="rg-teams-heading">
         <div className="rg-shell">
           <div className="rg-section-label">{copy('O competiție, perspective diferite', 'One competition, different perspectives')}</div>
           <div className="rg-teams-heading"><h2 id="rg-teams-heading">{copy('9 ECHIPE.\nACELEAȘI EMOȚII.', '9 TEAMS.\nTHE SAME EXCITEMENT.')}</h2><p>{copy('Studenți din opt facultăți și centre universitare aduc la aceeași masă idei, abilități și moduri diferite de a vedea lumea.', 'Students from eight faculties and university centres bring together different ideas, skills and ways of seeing the world.')}</p></div>

@@ -27,6 +27,7 @@ import { fetchCmsPages } from './lib/cms'
 const App = () => {
   const { pathname } = useLocation()
   const isHomePage = pathname === '/'
+  const isRubeGoldbergPage = pathname === '/rube-goldberg'
   const [cmsReady, setCmsReady] = useState(false)
   const [zoomDone, setZoomDone] = useState(false)
   const [introDone, setIntroDone] = useState(false)
@@ -90,7 +91,7 @@ const App = () => {
         <div ref={contentRef} className={isHomePage && !zoomDone ? 'opacity-0' : ''}>
           <Header />
           <main>
-            <InteractiveCursorGSAP />
+            {!isRubeGoldbergPage && <InteractiveCursorGSAP />}
             <Dialog />
             <Routes>
               <Route path="/" element={<LandingPage />} />
