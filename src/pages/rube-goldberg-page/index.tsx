@@ -4,6 +4,11 @@ import groupPhoto from '../../assets/about-us/best-text-group-photo.jpg'
 import workshopPhoto from '../../assets/about-us/about-us-11.jpg'
 import communityPhoto from '../../assets/about-us/gallery/about-us-17.jpg'
 import rubeGoldbergTitle from '../../assets/rube-goldberg/rube-goldberg-text.png'
+import ambalajLogo from '../../assets/rube-goldberg/sponsors/ambalaj.png'
+import cybercorLogo from '../../assets/rube-goldberg/sponsors/cybercor.png'
+import diezLogo from '../../assets/rube-goldberg/sponsors/diez.png'
+import kleverLogo from '../../assets/rube-goldberg/sponsors/klever.png'
+import utmLogo from '../../assets/rube-goldberg/sponsors/utm-logo.png'
 import './rube-goldberg.css'
 
 const RubeGoldbergPage = () => {
@@ -26,6 +31,13 @@ const RubeGoldbergPage = () => {
     ['FD', copy('Design', 'Design')],
     ['FCGC', copy('Construcții, Geodezie și Cadastru', 'Construction, Geodesy and Cadastre')],
     ['CAHUL', copy('Centrul Universitar „B. P. Hasdeu”', '“B. P. Hasdeu” University Centre')]
+  ]
+  const sponsors = [
+    { name: 'Klever', logo: kleverLogo, featured: true },
+    { name: 'Ambalaj Market', logo: ambalajLogo, featured: true },
+    { name: 'Universitatea Tehnică a Moldovei', logo: utmLogo },
+    { name: 'Cybercor', logo: cybercorLogo },
+    { name: 'diez', logo: diezLogo }
   ]
 
   return (
@@ -89,6 +101,21 @@ const RubeGoldbergPage = () => {
       <section className="rg-people rg-shell" aria-labelledby="rg-people-heading">
         <div className="rg-people-copy"><div className="rg-section-label">{copy('Oamenii din spatele ideilor', 'The people behind the ideas')}</div><h2 id="rg-people-heading">{copy('ÎMPREUNĂ\nPUNEM LUCRURILE\nÎN MIȘCARE.', 'TOGETHER,\nWE SET THINGS\nIN MOTION.')}</h2><p>{copy('BEST Chișinău înseamnă studenți voluntari care creează loc pentru idei, experiențe și prietenii. Rube Goldberg este unul dintre locurile în care învățăm construind.', 'BEST Chișinău is a community of student volunteers creating space for ideas, experiences and friendships. Rube Goldberg is one of the places where we learn by building.')}</p><Link className="rg-text-link" to="/about-us">{copy('Cunoaște BEST Chișinău', 'Meet BEST Chișinău')} <span aria-hidden="true">↗</span></Link></div>
         <div className="rg-photo-collage"><img src={groupPhoto} alt={copy('Comunitatea BEST Chișinău', 'The BEST Chișinău community')} loading="lazy" /><img src={communityPhoto} alt={copy('Membri BEST la o activitate împreună', 'BEST members at a community activity')} loading="lazy" /></div>
+      </section>
+
+      <section className="rg-sponsors rg-shell" aria-labelledby="rg-sponsors-heading">
+        <div className="rg-section-label">{copy('Partenerii competiției', 'Competition partners')}</div>
+        <h2 id="rg-sponsors-heading">{copy('CONSTRUIT\nÎMPREUNĂ.', 'BUILT\nTOGETHER.')}</h2>
+        <div className="rg-sponsor-grid">
+          {sponsors.map((sponsor) => (
+            <figure
+              className={`rg-sponsor ${sponsor.featured ? 'rg-sponsor-featured' : ''}`}
+              key={sponsor.name}
+            >
+              <img src={sponsor.logo} alt={sponsor.name} loading="lazy" />
+            </figure>
+          ))}
+        </div>
       </section>
 
       <section id="finala" className="rg-final rg-paper" aria-labelledby="rg-final-heading"><div className="rg-shell"><div className="rg-section-label">{copy('Finala Rube Goldberg 2026', 'Rube Goldberg 2026 final')}</div><h2 id="rg-final-heading">{copy('VINO SĂ VEZI\nCE SE ÎNTÂMPLĂ\nMAI DEPARTE.', 'COME AND SEE\nWHAT HAPPENS\nNEXT.')}</h2><div className="rg-final-bottom"><p>{copy('Susține-ți facultatea și descoperă, pe viu, cât de departe poate ajunge o idee simplă.', 'Support your faculty and see just how far a simple idea can go.')}</p><div><time dateTime="2026-10-30">30.10.2026</time><span>10:00–14:00 · UTM, Aula 3-3</span></div></div></div></section>
