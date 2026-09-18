@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import groupPhoto from '../../assets/about-us/best-text-group-photo.jpg'
 import workshopPhoto from '../../assets/about-us/about-us-11.jpg'
 import communityPhoto from '../../assets/about-us/gallery/about-us-17.jpg'
-import gears from '../../assets/rube-goldberg/gears.svg'
-import scissors from '../../assets/rube-goldberg/scissors.svg'
+import rubeGoldbergTitle from '../../assets/rube-goldberg/rube-goldberg-text.png'
 import './rube-goldberg.css'
 
 const RubeGoldbergPage = () => {
@@ -35,10 +34,8 @@ const RubeGoldbergPage = () => {
         <div className="rg-shell">
           <div className="rg-edition"><span>BEST Machine Contest</span><span>{copy('Ediția 10 / 2026', 'Edition 10 / 2026')}</span></div>
           <div className="rg-title-panel">
-            <img className="rg-gears" src={gears} alt="" aria-hidden="true" />
-            <img className="rg-scissors" src={scissors} alt="" aria-hidden="true" />
-            <h1 id="rg-title"><span>RUBE</span><span>GOLDBERG</span></h1>
-            <div className="rg-hero-note">{copy('O idee simplă.\nO reacție extraordinară.', 'A simple idea.\nAn extraordinary reaction.')}</div>
+            <h1 id="rg-title" className="rg-visually-hidden">Rube Goldberg 2026</h1>
+            <img className="rg-title-art" src={rubeGoldbergTitle} alt="" aria-hidden="true" />
           </div>
           <div className="rg-hero-bottom">
             <p>{copy('Nouă echipe. Zeci de reacții. O singură provocare: să întorci o pagină dintr-o carte.', 'Nine teams. Dozens of reactions. One challenge: turn a page in a book.')}</p>
