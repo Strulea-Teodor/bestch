@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import i18next from 'i18next'
 import gsap from 'gsap'
 
@@ -14,7 +14,7 @@ import WebDesignPage from './pages/web-design-page'
 import SeoPage from './pages/seo-page'
 import MaintenanceAndSupportPage from './pages/maintenance-page'
 import PrivacyPolicyPage from './pages/privacy-policy-page'
-import CmsRouter from './pages/cms-page'
+import PageNotFound from './pages/404-page'
 import InteractiveCursorGSAP from './components/interactive-cursor-gsap'
 import Dialog from './components/dialog'
 import { fetchCmsPages } from './lib/cms'
@@ -25,6 +25,8 @@ import { fetchCmsPages } from './lib/cms'
  */
 
 const App = () => {
+  const { pathname } = useLocation()
+  const isHomePage = pathname === '/'
   const [cmsReady, setCmsReady] = useState(false)
   const [zoomDone, setZoomDone] = useState(false)
   const [introDone, setIntroDone] = useState(false)
@@ -43,6 +45,8 @@ const App = () => {
   }, [])
 
   useEffect(() => {
+    if (!isHomePage || introDone) return
+
     let active = true
 
     // fetchCmsPages never rejects (it resolves to [] on failure), so the
@@ -54,11 +58,11 @@ const App = () => {
     return () => {
       active = false
     }
-  }, [])
+  }, [introDone, isHomePage])
 
   // Fade the page in once the logo zoom has finished.
   useEffect(() => {
-    if (!zoomDone || !contentRef.current) return
+    if (!isHomePage || !zoomDone || !contentRef.current) return
 
     const tween = gsap.to(contentRef.current, {
       opacity: 1,
@@ -69,19 +73,21 @@ const App = () => {
     return () => {
       tween.kill()
     }
-  }, [zoomDone])
+  }, [isHomePage, zoomDone])
+
+  const contentReady = !isHomePage || cmsReady || introDone
 
   return (
     <>
-      {!introDone && (
+      {isHomePage && !introDone && (
         <LoadingScreen
           ready={cmsReady}
           onZoomComplete={handleZoomComplete}
           onComplete={handleIntroComplete}
         />
       )}
-      {cmsReady && (
-        <div ref={contentRef} className="opacity-0">
+      {contentReady && (
+        <div ref={contentRef} className={isHomePage && !zoomDone ? 'opacity-0' : ''}>
           <Header />
           <main>
             <InteractiveCursorGSAP />
@@ -95,7 +101,7 @@ const App = () => {
               <Route path="maintenance-&-support" element={<MaintenanceAndSupportPage />} />
               <Route path="seo" element={<SeoPage />} />
               <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-              <Route path="*" element={<CmsRouter />} />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </main>
           <Footer />
