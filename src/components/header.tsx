@@ -29,9 +29,9 @@ const Header = () => {
   const rubeGoldbergLinks = [
     { title: copy('Despre', 'About'), href: '#despre' },
     { title: copy('Provocare', 'Challenge'), href: '#provocare' },
-    { title: 'Calendar', href: '#calendar' },
+    { title: copy('Program', 'Programme'), href: '#program' },
     { title: copy('Echipe', 'Teams'), href: '#echipe' },
-    { title: copy('Finală', 'Final'), href: '#finala' }
+    { title: 'FAQ', href: '#faq' }
   ]
   const links = isRubeGoldbergPage ? rubeGoldbergLinks : defaultLinks
 
