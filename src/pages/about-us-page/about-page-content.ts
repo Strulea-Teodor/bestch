@@ -50,7 +50,10 @@ export const getAboutPageContent = (translate: Translate) => ({
     'BEST Chișinău face parte din BEST din anul 2007. De atunci, echipa noastră a contribuit la dezvoltarea academică, socială și culturală a numeroși studenți europeni și moldoveni.'
   ),
   eventsLabel: translate('Evenimentele noastre'),
-  events: eventNames.map(translate),
+  events: eventNames.map((eventName) => ({ label: translate(eventName) })),
+  eventPresentation: {
+    showSeparators: false
+  },
   boardLabel: translate('Consiliul director'),
   boardDescription: translate(
     'Consiliul director coordonează direcția organizației și susține echipa în transformarea ideilor în proiecte pentru studenți.'

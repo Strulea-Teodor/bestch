@@ -12,15 +12,23 @@ test('builds the complete translated about-page event sequence from the Frame 11
 
   const content = getAboutPageContent(translate)
 
-  assert.deepEqual(content.events, [
-    'translated:Cursul de Vară',
-    'translated:Rube Goldberg',
-    'translated:Hackathon',
-    'translated:BEST Talks',
-    'translated:Recrutări',
-    'translated:Motivational Weekend',
-    'translated:Aniversare'
-  ])
+  assert.deepEqual(
+    content.events.map((event) => event.label),
+    [
+      'translated:Cursul de Vară',
+      'translated:Rube Goldberg',
+      'translated:Hackathon',
+      'translated:BEST Talks',
+      'translated:Recrutări',
+      'translated:Motivational Weekend',
+      'translated:Aniversare'
+    ]
+  )
+  assert.ok(content.events.every((event) => !('hint' in event)))
+  assert.ok(content.events.every((event) => !('href' in event)))
+  assert.deepEqual(content.eventPresentation, {
+    showSeparators: false
+  })
   assert.ok(translated.includes('Consiliul director'))
   assert.ok(translated.includes('Departamentele BEST Chișinău'))
   assert.ok(translated.includes('Galerie'))

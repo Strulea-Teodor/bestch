@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 import bestChisinauLogo from '../../assets/best-chisinau.png'
 import groupPhoto from '../../assets/about-us/best-text-group-photo.jpg'
+import useCursorSize from '../../lib/use-cursor-size'
 import { getAboutPageContent } from './about-page-content'
 
 type SectionLabelProps = {
@@ -53,6 +54,7 @@ const Watermarks = () => (
 
 const AboutUsPage = () => {
   const { t } = useTranslation()
+  const { setCursorSize } = useCursorSize()
   const content = getAboutPageContent(t)
 
   return (
@@ -92,11 +94,23 @@ const AboutUsPage = () => {
             {content.eventsLabel}
           </SectionLabel>
           <div
-            className="mt-[clamp(42px,5.25vw,63px)] space-y-[clamp(16px,2.5vw,30px)] pl-[15px] leading-[1.2]"
+            className={`mt-[clamp(42px,5.25vw,63px)] pl-[15px] leading-[1.2] ${
+              content.eventPresentation.showSeparators ? 'border-b border-white/35' : ''
+            }`}
             style={{ fontSize: content.typography.events }}
           >
             {content.events.map((event) => (
-              <p key={event}>{event}</p>
+              <button
+                key={event.label}
+                type="button"
+                className={`group block w-full px-0 py-[clamp(14px,2vw,24px)] text-left transition-all duration-300 ease-out hover:bg-gradient-to-r hover:from-white/60 hover:via-white hover:to-white/60 hover:px-[clamp(16px,3vw,36px)] hover:text-black focus-visible:bg-white focus-visible:px-[clamp(16px,3vw,36px)] focus-visible:text-black focus-visible:outline-none active:scale-[0.995] ${
+                  content.eventPresentation.showSeparators ? 'border-t border-white/35' : ''
+                }`}
+                onMouseEnter={() => setCursorSize(150)}
+                onMouseLeave={() => setCursorSize(40)}
+              >
+                <span>{event.label}</span>
+              </button>
             ))}
           </div>
         </section>
