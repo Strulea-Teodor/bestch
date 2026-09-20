@@ -90,7 +90,8 @@ const RubeGoldbergPage = () => {
 
       <section id="provocare" className="rg-challenge rg-paper" aria-labelledby="rg-challenge-heading">
         <div className="rg-shell">
-          <div className="rg-challenge-title"><span className="rg-challenge-number" aria-hidden="true">10</span><h2 id="rg-challenge-heading">{copy('PROVOCAREA EDIȚIEI 2026.', 'THE 2026 CHALLENGE.')}</h2></div>
+          <div className="rg-challenge-title"><h2 id="rg-challenge-heading">{copy('PROVOCAREA EDIȚIEI 2026.', 'THE 2026 CHALLENGE.')}</h2></div>
+          <div className="rg-book" aria-hidden="true"><span /><span /><span /></div>
           <p className="rg-challenge-description">{copy('În acest an, fiecare echipă trebuie să construiască o mașinărie care să întoarcă o pagină dintr-o carte. Deși toate echipele pornesc de la aceeași sarcină, modul în care aleg să construiască mecanismul este la alegerea lor.', 'This year, every team must build a machine that turns a page in a book. Although every team starts with the same task, how they build the mechanism is up to them.')}</p>
           <div className="rg-rules">
             <div><strong>20+</strong><span>{copy('transferuri de energie', 'energy transfers')}</span></div>
@@ -102,7 +103,7 @@ const RubeGoldbergPage = () => {
 
       <section className="rg-reasons rg-shell" aria-labelledby="rg-reasons-heading">
         <h2 id="rg-reasons-heading">{copy('VEZI IDEILE CÂND ÎNCEP SĂ SE MIȘTE.', 'SEE THE IDEAS START MOVING.')}</h2>
-        <div className="rg-reason-grid">{reasons.map(([title, description], index) => <article key={title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
+        <div className="rg-reason-grid">{reasons.map(([title, description]) => <article key={title}><h3>{title}</h3><p>{description}</p></article>)}</div>
       </section>
 
       <section id="program" className="rg-programme rg-paper" aria-labelledby="rg-programme-heading">
@@ -147,6 +148,7 @@ const RubeGoldbergPage = () => {
 
       <section id="finala" className="rg-final rg-shell" aria-labelledby="rg-final-heading">
         <h2 id="rg-final-heading">{copy('VINO SĂ VEZI CE SE ÎNTÂMPLĂ MAI DEPARTE.', 'COME AND SEE WHAT HAPPENS NEXT.')}</h2>
+        <a className="rg-button" href={calendarUrl} target="_blank" rel="noreferrer">{copy('Adaugă în calendar', 'Add to calendar')}<span aria-hidden="true">↗</span></a>
       </section>
     </div>
   )
