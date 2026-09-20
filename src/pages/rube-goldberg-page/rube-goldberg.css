@@ -48,7 +48,6 @@
 .rg-rules strong { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: clamp(68px, 7vw, 100px); line-height: 1; }
 .rg-rules strong span { margin-left: 5px; font-size: .5em; }
 .rg-rules > div > span { display: block; margin-top: 10px; font-size: 14px; }
-.rg-judging { margin-top: 24px !important; font-size: 14px; line-height: 1.7; }
 
 .rg-reasons h2 { max-width: 800px; }
 .rg-reason-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 56px; border-top: 2px solid var(--rg-yellow); }
@@ -114,8 +113,6 @@
 .rg-inline-links { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 27px; }
 
 .rg-final h2 { max-width: 1160px; margin-inline: auto !important; text-align: center; font-size: clamp(74px, 10vw, 148px); }
-.rg-final-bottom { display: flex; justify-content: center; align-items: center; gap: 35px; margin-top: 42px; padding-top: 25px; border-top: 2px solid var(--rg-yellow); }
-.rg-final .rg-button { color: var(--rg-navy); background: var(--rg-yellow); }
 
 @media (max-width: 1100px) {
   .rg-shell { padding-inline: 30px; }
@@ -181,7 +178,6 @@
   .rg-people-layout h2 { font-size: 49px; }
   .rg-inline-links { align-items: flex-start; flex-direction: column; }
   .rg-final h2 { font-size: 58px; }
-  .rg-final-bottom { align-items: center; flex-direction: column; gap: 25px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

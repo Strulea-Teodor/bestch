@@ -9,24 +9,22 @@ import cybercorLogo from '../../assets/rube-goldberg/sponsors/cybercor.png'
 import diezLogo from '../../assets/rube-goldberg/sponsors/diez.png'
 import kleverLogo from '../../assets/rube-goldberg/sponsors/klever.png'
 import utmLogo from '../../assets/rube-goldberg/sponsors/utm-logo.png'
-import content from './content.json'
 import './rube-goldberg.css'
 
-const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Rube%20Goldberg%202026&dates=20261030T100000%2F20261030T150000&ctz=Europe%2FChisinau&location=Campusul%20UTM%20Riscani%2C%20Chisinau&details=Demonstratii%20live%20in%20Cortul%20UTM%2C%20urmate%20de%20anuntarea%20castigatorilor%20si%20ceremonia%20de%20inchidere%20in%20Aula%203-3.'
-const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universitatea+Tehnica+a+Moldovei+campus+Riscani+Chisinau'
+const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Rube%20Goldberg%202026&dates=20261030T100000%2F20261030T140000&ctz=Europe%2FChisinau&location=Universitatea%20Tehnica%20a%20Moldovei%2C%20Aula%203-3&details=Jurizarea%20Rube%20Goldberg%202026%20si%20demonstratiile%20celor%209%20echipe.'
+const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universitatea+Tehnica+a+Moldovei+Aula+3-3+Chisinau'
 const instagramUrl = 'https://www.instagram.com/best_chisinau/'
 
 const RubeGoldbergPage = () => {
   const { i18n } = useTranslation()
   const english = i18n.language.startsWith('en')
-  const locale: 'ro' | 'en' = english ? 'en' : 'ro'
   const copy = (ro: string, en: string) => english ? en : ro
   const participantStages = [
-    ['14.09', copy('Deschiderea competiției', 'Competition opening')],
-    ['30.09', copy('Transmiterea conceptului', 'Concept submission')],
-    ['21.10', copy('Finalizarea asamblării', 'Assembly deadline')],
-    ['22–29.10', copy('Transportarea mașinăriilor', 'Machine transport')],
-    ['30.10', copy('Finala și jurizarea', 'Final and judging')]
+    ['14.09', copy('Deschiderea oficială și prezentarea provocării', 'Official opening and challenge presentation')],
+    ['30.09', copy('Prezentarea conceptelor și schițelor', 'Concept and sketch presentation')],
+    ['21.10', copy('Etapa finală de construcție și testare', 'Final construction and testing stage')],
+    ['22–28.10', copy('Pregătirea pentru jurizare', 'Preparation for judging')],
+    ['30.10', copy('Jurizarea finală', 'Final judging')]
   ]
   const teams = [
     ['FET', copy('Electronică și Telecomunicații', 'Electronics and Telecommunications')],
@@ -35,7 +33,7 @@ const RubeGoldbergPage = () => {
     ['FIMIT', copy('Inginerie Mecanică, Industrială și Transporturi', 'Mechanical, Industrial and Transport Engineering')],
     ['FUA', copy('Urbanism și Arhitectură', 'Urbanism and Architecture')],
     ['FD', copy('Design', 'Design')],
-    ['FCGC', copy('Construcții, Geodezie și Cadastru', 'Construction, Geodesy and Cadastre')],
+    ['FCG', copy('Construcții, Geodezie și Cadastru', 'Construction, Geodesy and Cadastre')],
     ['CAHUL', copy('Centrul Universitar „B. P. Hasdeu”', '“B. P. Hasdeu” University Centre')]
   ]
   const reasons = [
@@ -51,11 +49,15 @@ const RubeGoldbergPage = () => {
     { name: 'Cybercor', logo: cybercorLogo },
     { name: 'diez', logo: diezLogo }
   ]
-  const faqs = [
-    [copy('Când are loc finala?', 'When is the final?'), copy('Pe 30 octombrie 2026, între 10:00 și 15:00.', 'On 30 October 2026, from 10:00 to 15:00.')],
-    [copy('Unde are loc?', 'Where does it take place?'), copy('Prezentările și jurizarea au loc în Cortul UTM. La 14:00, programul continuă în Aula 3-3 cu anunțarea câștigătorilor și ceremonia de închidere.', 'Presentations and judging take place in the UTM Tent. At 14:00, the programme continues in Aula 3-3 with the winner announcement and closing ceremony.')],
-    [copy('Ce voi vedea?', 'What will I see?'), copy('Prezentarea celor nouă mașinării, două runde de jurizare și ceremonia de premiere.', 'Nine machine presentations, two judging rounds and the awards ceremony.')],
-    [copy('Cine organizează evenimentul?', 'Who organises the event?'), copy('BEST Chișinău împreună cu Universitatea Tehnică a Moldovei.', 'BEST Chișinău together with the Technical University of Moldova.')]
+  const faqs = english ? [
+    ['When is the final?', 'On 30 October 2026, from 10:00 to 14:00.'],
+    ['Where does it take place?', 'The event takes place at the Technical University of Moldova, Aula 3-3.'],
+    ['What will I see?', 'Nine machine presentations, two judging rounds and the awards ceremony.'],
+    ['Who organises the event?', 'BEST Chișinău together with the Technical University of Moldova.']
+  ] : [
+    ['Pot participa la jurizare dacă nu fac parte dintr-o echipă?', 'Da. Jurizarea este deschisă publicului, iar cei interesați pot veni să urmărească prezentările și demonstrațiile echipelor.'],
+    ['Unde are loc evenimentul?', 'Evenimentul are loc la Universitatea Tehnică a Moldovei, Aula 3-3, pe 30 octombrie 2026, între orele 10:00 și 14:00.'],
+    ['Este necesară înregistrarea?', 'Informațiile privind accesul și eventuala înregistrare vor fi publicate înainte de eveniment.']
   ]
 
   return (
@@ -68,19 +70,19 @@ const RubeGoldbergPage = () => {
             <img className="rg-title-art" src={rubeGoldbergTitle} alt="" aria-hidden="true" />
           </div>
           <div className="rg-hero-bottom">
-            <p>{copy('Nouă echipe construiesc nouă drumuri complicate spre aceeași destinație: o singură pagină întoarsă.', 'Nine teams build nine complicated routes to the same destination: one turned page.')}</p>
-            <a className="rg-button" href="#program">{copy('Vezi programul', 'See the programme')}<span aria-hidden="true">↓</span></a>
+            <p>{copy('Rube Goldberg este o competiție inginerească în care echipele de studenți construiesc mecanisme complexe pentru a realiza o sarcină simplă. Ediția din acest an reunește 9 echipe, iar provocarea lor este să întoarcă o pagină dintr-o carte printr-un lanț de cel puțin 20 de transferuri de energie.', 'Rube Goldberg is an engineering competition where student teams build complex mechanisms to complete a simple task. This year, nine teams must turn a page in a book through a chain of at least 20 energy transfers.')}</p>
+            <a className="rg-button" href="#program">{copy('Vino la jurizare', 'Come to the judging')}<span aria-hidden="true">↓</span></a>
           </div>
-          <div className="rg-date-strip"><time dateTime="2026-10-30">30.10.2026</time><span>10:00–15:00</span><span>{copy('Campusul UTM · Rîșcani', 'UTM Campus · Rîșcani')}</span></div>
+          <div className="rg-date-strip"><time dateTime="2026-10-30">30.10.2026</time><span>10:00–14:00</span><span>{copy('Campusul UTM · Rîșcani', 'UTM Campus · Rîșcani')}</span></div>
         </div>
       </section>
 
       <section id="despre" className="rg-explainer rg-shell" aria-labelledby="rg-about-heading">
         <div className="rg-explainer-grid">
-          <h2 id="rg-about-heading">{copy('O SARCINĂ SIMPLĂ. UN DRUM DELIBERAT COMPLICAT.', 'A SIMPLE TASK. A DELIBERATELY COMPLICATED ROUTE.')}</h2>
+          <h2 id="rg-about-heading">{copy('CE ESTE RUBE GOLDBERG?', 'WHAT IS RUBE GOLDBERG?')}</h2>
           <div className="rg-explainer-copy">
-            <p className="rg-lead">{copy('Un obiect pornește următorul mecanism, iar energia trece din piesă în piesă până când mașinăria îndeplinește o sarcină simplă.', 'One object triggers the next mechanism, passing energy from piece to piece until the machine completes a simple task.')}</p>
-            <p>{copy('La ediția din acest an, fiecare echipă trebuie să construiască un lanț care întoarce o pagină dintr-o carte.', 'This year, every team must build a chain reaction that turns a page in a book.')}</p>
+            <p className="rg-lead">{copy('O mașinărie Rube Goldberg este un mecanism construit pentru a realiza o sarcină simplă printr-o serie de acțiuni interconectate.', 'A Rube Goldberg machine is a mechanism built to complete a simple task through a series of interconnected actions.')}</p>
+            <p>{copy('În loc să ajungă direct la rezultatul final, mașinăria folosește diferite obiecte și mecanisme care declanșează succesiv următoarea acțiune. Echipele combină astfel cunoștințele tehnice cu creativitatea pentru a construi un mecanism funcțional.', 'Instead of reaching the result directly, the machine uses different objects and mechanisms that trigger each successive action. Teams combine technical knowledge with creativity to build a working mechanism.')}</p>
           </div>
         </div>
         <figure className="rg-wide-photo"><img src={workshopPhoto} alt={copy('Studenți BEST lucrând împreună', 'BEST students working together')} loading="lazy" /></figure>
@@ -88,14 +90,13 @@ const RubeGoldbergPage = () => {
 
       <section id="provocare" className="rg-challenge rg-paper" aria-labelledby="rg-challenge-heading">
         <div className="rg-shell">
-          <div className="rg-challenge-title"><span className="rg-challenge-number" aria-hidden="true">10</span><h2 id="rg-challenge-heading">{copy('TOTUL PENTRU O PAGINĂ.', 'ALL THIS FOR ONE PAGE.')}</h2></div>
-          <p className="rg-challenge-description">{copy('Construiește o mașinărie care întoarce o pagină dintr-o carte. Drumul până acolo depinde de imaginația echipei.', 'Build a machine that turns a page in a book. How it gets there depends on the team’s imagination.')}</p>
+          <div className="rg-challenge-title"><span className="rg-challenge-number" aria-hidden="true">10</span><h2 id="rg-challenge-heading">{copy('PROVOCAREA EDIȚIEI 2026.', 'THE 2026 CHALLENGE.')}</h2></div>
+          <p className="rg-challenge-description">{copy('În acest an, fiecare echipă trebuie să construiască o mașinărie care să întoarcă o pagină dintr-o carte. Deși toate echipele pornesc de la aceeași sarcină, modul în care aleg să construiască mecanismul este la alegerea lor.', 'This year, every team must build a machine that turns a page in a book. Although every team starts with the same task, how they build the mechanism is up to them.')}</p>
           <div className="rg-rules">
-            <div><strong>20–30</strong><span>{copy('transferuri de energie', 'energy transfers')}</span></div>
+            <div><strong>20+</strong><span>{copy('transferuri de energie', 'energy transfers')}</span></div>
             <div><strong>2×2×2<span>m</span></strong><span>{copy('dimensiuni maxime', 'maximum dimensions')}</span></div>
             <div><strong>5+1</strong><span>{copy('studenți și un mentor', 'students and one mentor')}</span></div>
           </div>
-          <p className="rg-judging">{copy('Juriul evaluează funcționarea, complexitatea, tema, umorul, surpriza și prezentarea. Fiecare mașinărie are două parcursuri.', 'Judges assess function, complexity, theme, humour, surprise and presentation. Each machine gets two runs.')}</p>
         </div>
       </section>
 
@@ -107,19 +108,9 @@ const RubeGoldbergPage = () => {
       <section id="program" className="rg-programme rg-paper" aria-labelledby="rg-programme-heading">
         <div className="rg-shell">
           <div className="rg-programme-intro">
-            <h2 id="rg-programme-heading">30.10<br />10:00–15:00</h2>
-            <p>{copy('Demonstrațiile se desfășoară în Cortul UTM. La 14:00, ne mutăm în Aula 3-3 pentru a afla câștigătorii.', 'Demonstrations take place in the UTM Tent. At 14:00, we move to Aula 3-3 to announce the winners.')}</p>
+            <h2 id="rg-programme-heading">30.10<br />10:00–14:00</h2>
+            <p>{copy('Programul detaliat al jurizării va fi publicat în curând. Evenimentul va avea loc la Universitatea Tehnică a Moldovei, în Aula 3-3.', 'The detailed judging programme will be published soon. The event will take place at the Technical University of Moldova, in Aula 3-3.')}</p>
           </div>
-          <ol className="rg-programme-list">
-            {content.finalDay.map((item, index) => (
-              <li className={item.venue === 'aula' ? 'rg-programme-closing' : ''} key={`${item.start}-${item.title.ro}`}>
-                <time dateTime={`2026-10-30T${item.start}`}>{item.start}<span>–{item.end}</span></time>
-                <div><h3>{item.title[locale]}</h3>{!item.public && <small>{copy('Moment de deliberare a juriului', 'Jury deliberation')}</small>}</div>
-                <strong>{item.venue === 'tent' ? copy('Cortul UTM', 'UTM Tent') : 'Aula 3-3'}</strong>
-                {index === content.finalDay.length - 1 && <span className="rg-venue-shift">{copy('Ne mutăm aici pentru închidere', 'We move here for the closing')}</span>}
-              </li>
-            ))}
-          </ol>
           <div className="rg-action-row">
             <a className="rg-button" href={calendarUrl} target="_blank" rel="noreferrer">{copy('Adaugă în calendar', 'Add to calendar')}<span aria-hidden="true">↗</span></a>
             <a className="rg-outline-link" href={mapUrl} target="_blank" rel="noreferrer">{copy('Vezi campusul pe hartă', 'View the campus on the map')}</a>
@@ -128,13 +119,13 @@ const RubeGoldbergPage = () => {
       </section>
 
       <section id="echipe" className="rg-teams rg-shell" aria-labelledby="rg-teams-heading">
-        <div className="rg-teams-heading"><h2 id="rg-teams-heading">{copy('OPT FACULTĂȚI. NOUĂ MECANISME.', 'EIGHT FACULTIES. NINE MACHINES.')}</h2><p>{copy('FCIM participă cu două echipe. Fiecare dintre celelalte facultăți și centre universitare intră în concurs cu câte o echipă.', 'FCIM enters two teams. Each of the other faculties and university centres enters one team.')}</p></div>
+        <div className="rg-teams-heading"><h2 id="rg-teams-heading">{copy('ECHIPE PARTICIPANTE.', 'PARTICIPATING TEAMS.')}</h2><p>{copy('La ediția din 2026 participă 9 echipe formate din studenți ai mai multor facultăți și centre universitare. Sunt reprezentate facultățile FET, FEIE, FCIM, FIMIT, FUA, FD și FCG, precum și Centrul Universitar din Cahul.', 'The 2026 edition brings together nine teams of students from several faculties and university centres. FCIM enters two teams, while each of the other represented faculties and centres enters one.')}</p></div>
         <div className="rg-team-grid">{teams.map(([short, full]) => <div className="rg-team" key={short}><h3>{short}</h3><p>{full}</p>{short === 'FCIM' && <span>{copy('2 echipe', '2 teams')}</span>}</div>)}</div>
       </section>
 
       <section id="participanti" className="rg-participant-timeline rg-paper" aria-labelledby="rg-participant-heading">
         <div className="rg-shell">
-          <div className="rg-participant-layout"><h2 id="rg-participant-heading">{copy('DE LA SCHIȚĂ LA FINALĂ.', 'FROM SKETCH TO FINAL.')}</h2><ol>{participantStages.map(([date, title]) => <li key={date}><time>{date}</time><span>{title}</span></li>)}</ol></div>
+          <div className="rg-participant-layout"><h2 id="rg-participant-heading">{copy('DESFĂȘURAREA COMPETIȚIEI.', 'COMPETITION TIMELINE.')}</h2><ol>{participantStages.map(([date, title]) => <li key={date}><time>{date}</time><span>{title}</span></li>)}</ol></div>
         </div>
       </section>
 
@@ -149,14 +140,13 @@ const RubeGoldbergPage = () => {
 
       <section className="rg-people rg-paper" aria-labelledby="rg-people-heading">
         <div className="rg-shell rg-people-layout">
-          <div><h2 id="rg-people-heading">{copy('STUDENȚI CARE PUN IDEILE ÎN MIȘCARE.', 'STUDENTS WHO SET IDEAS IN MOTION.')}</h2><p>{copy('Rube Goldberg este organizat de BEST Chișinău împreună cu Universitatea Tehnică a Moldovei.', 'Rube Goldberg is organised by BEST Chișinău together with the Technical University of Moldova.')}</p><div className="rg-inline-links"><Link to="/about-us">{copy('Despre BEST Chișinău', 'About BEST Chișinău')}</Link><a href={instagramUrl} target="_blank" rel="noreferrer">Instagram</a></div></div>
+          <div><h2 id="rg-people-heading">{copy('DESPRE BEST CHIȘINĂU.', 'ABOUT BEST CHIȘINĂU.')}</h2><p>{copy('BEST Chișinău este o organizație studențească care organizează proiecte și activități dedicate dezvoltării studenților.', 'BEST Chișinău is a student organisation that runs projects and activities dedicated to student development.')}</p><p>{copy('Rube Goldberg este unul dintre proiectele organizate de BEST Chișinău în colaborare cu Universitatea Tehnică a Moldovei.', 'Rube Goldberg is one of the projects organised by BEST Chișinău in collaboration with the Technical University of Moldova.')}</p><div className="rg-inline-links"><Link to="/about-us">{copy('Descoperă BEST Chișinău', 'Discover BEST Chișinău')}</Link><a href={instagramUrl} target="_blank" rel="noreferrer">Instagram</a></div></div>
           <div className="rg-photo-collage"><img src={groupPhoto} alt={copy('Comunitatea BEST Chișinău', 'The BEST Chișinău community')} loading="lazy" /><img src={communityPhoto} alt={copy('Membri BEST la o activitate împreună', 'BEST members at a community activity')} loading="lazy" /></div>
         </div>
       </section>
 
       <section id="finala" className="rg-final rg-shell" aria-labelledby="rg-final-heading">
         <h2 id="rg-final-heading">{copy('VINO SĂ VEZI CE SE ÎNTÂMPLĂ MAI DEPARTE.', 'COME AND SEE WHAT HAPPENS NEXT.')}</h2>
-        <div className="rg-final-bottom"><a className="rg-button" href="#program">{copy('Planifică-ți ziua', 'Plan your day')}<span aria-hidden="true">↑</span></a></div>
       </section>
     </div>
   )
