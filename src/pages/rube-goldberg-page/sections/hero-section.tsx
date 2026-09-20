@@ -1,7 +1,6 @@
 import useCopy from '../use-copy'
 import Arrow from '../components/arrow'
 import DateBand from '../components/date-band'
-import { DrawRule } from '../motion/primitives'
 import keyArt640 from '../../../assets/rube-goldberg/rube-goldberg-text-640.webp'
 import keyArt1200 from '../../../assets/rube-goldberg/rube-goldberg-text-1200.webp'
 import keyArt1700 from '../../../assets/rube-goldberg/rube-goldberg-text-1700.webp'
@@ -14,13 +13,6 @@ const HeroSection = () => {
   return (
     <section className="rg-field rg-field--yellow rg-hero" aria-labelledby="rg-title">
       <div className="rg-grid">
-        <div className="rg-hero__strip">
-          <p className="rg-label rg-hero__edition">
-            <span>BEST Machine Contest</span>
-            <span>{copy('Ediția 10 / 2026', 'Edition 10 / 2026')}</span>
-          </p>
-          <DrawRule onMount />
-        </div>
         <div className="rg-hero__plate">
           <h1 id="rg-title" className="rg-visually-hidden">Rube Goldberg 2026</h1>
           <img

@@ -4,7 +4,6 @@ import RailHeading from '../components/rail-heading'
 import { Fade, Wipe } from '../motion/primitives'
 import { instagramUrl } from '../data'
 import groupPhoto from '../../../assets/about-us/best-text-group-photo.jpg'
-import communityPhoto from '../../../assets/about-us/gallery/about-us-17.jpg'
 
 const AboutBestSection = () => {
   const { copy } = useCopy()
@@ -28,14 +27,6 @@ const AboutBestSection = () => {
             <a className="rg-link" href={instagramUrl} target="_blank" rel="noreferrer">Instagram</a>
           </div>
         </Fade>
-        <Wipe className="rg-about__photo">
-          <figure className="rg-photo rg-photo--duotone">
-            <div className="rg-photo__frame">
-              <img src={communityPhoto} alt="" width={1624} height={1078} loading="lazy" decoding="async" />
-            </div>
-            <figcaption className="rg-caption">{copy('Membri BEST la o activitate împreună', 'BEST members at a community activity')}</figcaption>
-          </figure>
-        </Wipe>
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
 import useCopy from '../use-copy'
 import Arrow from '../components/arrow'
-import { DrawRule, Fade, Wipe } from '../motion/primitives'
+import { Fade, Wipe } from '../motion/primitives'
 import { calendarUrl, eventDate, eventTime, labels, mapUrl, venue } from '../data'
 
 // The date has been set large twice by now, so the page closes on a quiet
@@ -18,7 +18,6 @@ const FinalSection = () => {
           <h2 id="rg-final-heading" className="rg-display">{copy('VINO SĂ VEZI CE SE ÎNTÂMPLĂ MAI DEPARTE.', 'COME AND SEE WHAT HAPPENS NEXT.')}</h2>
         </Wipe>
         <div className="rg-final__colophon">
-          <DrawRule />
           <Fade as="div" delay={0.1}>
             <dl className="rg-colophon">
               <div>

@@ -19,11 +19,10 @@ const SponsorsSection = () => {
           {sponsors.map((sponsor) => (
             <li className={sponsor.featured ? 'rg-sponsor rg-sponsor--featured' : 'rg-sponsor'} key={sponsor.name}>
               <figure>
-                {/* The logos are dark on transparent, so each one gets a white ground. */}
                 <div className="rg-sponsor__cell">
                   <img
                     src={sponsor.logo}
-                    alt=""
+                    alt={sponsor.name}
                     width={sponsor.width}
                     height={sponsor.height}
                     style={{ width: logoWidth(sponsor) }}
@@ -31,7 +30,6 @@ const SponsorsSection = () => {
                     decoding="async"
                   />
                 </div>
-                <figcaption className="rg-caption">{sponsor.name}</figcaption>
               </figure>
             </li>
           ))}

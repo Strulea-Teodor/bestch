@@ -19,7 +19,6 @@ const ExplainerSection = () => {
             <div className="rg-photo__frame">
               <img src={workshopPhoto} alt="" width={1762} height={2094} loading="lazy" decoding="async" />
             </div>
-            <figcaption className="rg-caption">{copy('Studenți BEST lucrând împreună', 'BEST students working together')}</figcaption>
           </figure>
         </Wipe>
       </div>
